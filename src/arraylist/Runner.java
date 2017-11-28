@@ -10,6 +10,9 @@ public class Runner {
 		a2.addName();
 		a2.PrintNames();
 		a2.PrintSize();
+		a2.findName();
+		a2.deleteName();
+		a2.replaceName();
 
 	}
 	/*
