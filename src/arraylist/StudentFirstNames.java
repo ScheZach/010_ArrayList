@@ -20,14 +20,8 @@ public class StudentFirstNames {
 		a2Students.add("Mitchell");
 		
 	}
-	public void PrintNames() {
-		//System.out.println("Currently the array list has following elemtents: "+ a2Students);
-		for (int i = 0; i < nameNum; i++) {
-			System.out.println("This student's name is " + a2Students.get(i));
-		}
-	}
 	public void PrintSize() {
-		System.out.println("Number of student names is " + a2Students.size());
+		JOptionPane.showMessageDialog(null, "Number of student names is " + a2Students.size());
 	}
 	
 	public ArrayList<String> getA2Students() {
@@ -37,12 +31,10 @@ public class StudentFirstNames {
 		this.a2Students = a2Students;
 	}
 	public void addName() {
-		System.out.println("What is the first name of your student");
-		String fnameEntry = keyboard.nextLine();
+		String fnameEntry = JOptionPane.showInputDialog("What is the first name of your student?");
 		for (int i = 0; i < nameNum; i++) {
 			if (fnameEntry.equals(a2Students.get(i))) {
-				System.out.println("Please reenter your name with a last int.");
-				fnameEntry = keyboard.nextLine();
+				fnameEntry = JOptionPane.showInputDialog("Please reenter your name with a last int.");
 			}
 		}
 		a2Students.add(fnameEntry);
@@ -67,29 +59,30 @@ public class StudentFirstNames {
 		}
 	}
 	public void deleteName() {
-		System.out.println("What name would you like to delete");
-		String deleteName = keyboard.nextLine();
+		String deleteName = JOptionPane.showInputDialog("What name would you like to delete?");
 		if (a2Students.indexOf(deleteName) < 0) {
-			JOptionPane.showMessageDialog(null, "Your name doesn't exist. Please enter another name.");
-			deleteName = keyboard.nextLine();
+			deleteName = JOptionPane.showInputDialog("Your name doesn't exist. Please enter another name.");
 		}
 		a2Students.remove(deleteName);
-		PrintNames();
 		nameNum--;
 	}
 	public void replaceName() {
-		System.out.println("What name would you like to replace?");
-		String prevName = keyboard.nextLine();
-		System.out.println("What name would you like to replace with?");
-		String replName = keyboard.nextLine();
+		String prevName = JOptionPane.showInputDialog("What name would you like to replace?");
+		String replName = JOptionPane.showInputDialog("What name would you like to replace with?");
 		if (a2Students.indexOf(prevName) < 0) {
-			System.out.println("Your previous name doesn't exist. Please enter a new one");
-			prevName = keyboard.nextLine();
+			prevName = JOptionPane.showInputDialog("Your previous name doesn't exist. Please enter a new one");
 		}
 		a2Students.remove(prevName);
 		a2Students.add(replName);
-		PrintNames();
 		
+	}
+	public void PrintNames() {
+		//System.out.println("Currently the array list has following elemtents: "+ a2Students);
+		msg = "";
+		for (int i = 0; i < nameNum; i++) {
+			msg = msg + "\nThis student's name is " + a2Students.get(i);
+		}
+		JOptionPane.showMessageDialog(null, msg);
 	}
 
 }
